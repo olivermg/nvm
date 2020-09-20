@@ -311,11 +311,8 @@ nvm_tree_contains_path() {
 
   local pathdir
   pathdir=$(dirname "${node_path}")
-
-  # get real directory in case of symbolic links 
-  if [ -d "${pathdir-}" ]; then
-    pathdir="$(nvm_cd -P "${pathdir}" && pwd)"
-  fi
+  m make sure to resolve symlinks:
+  pathdir="$(nvm_cd "${pathdir}" && pwd -P)"
   
   while [ "${pathdir}" != "" ] && [ "${pathdir}" != "." ] && [ "${pathdir}" != "/" ] && [ "${pathdir}" != "${tree}" ]; do
     pathdir=$(dirname "${pathdir}")
