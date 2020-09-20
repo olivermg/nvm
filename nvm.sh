@@ -311,8 +311,10 @@ nvm_tree_contains_path() {
 
   local pathdir
   pathdir=$(dirname "${node_path}")
-  m make sure to resolve symlinks:
+
+  # make sure to resolve symlinks:
   pathdir="$(nvm_cd "${pathdir}" && pwd -P)"
+  tree="$(nvm_cd "${tree}" && pwd -P)"
   
   while [ "${pathdir}" != "" ] && [ "${pathdir}" != "." ] && [ "${pathdir}" != "/" ] && [ "${pathdir}" != "${tree}" ]; do
     pathdir=$(dirname "${pathdir}")
