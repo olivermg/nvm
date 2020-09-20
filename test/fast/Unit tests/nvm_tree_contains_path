@@ -4,7 +4,6 @@ cleanup () {
   rm tmp3p/node
   rm tmp3s
   rmdir tmp3p
-  rmdir tmp3
   rm tmp/node
   rmdir tmp
   rm tmp2/node
